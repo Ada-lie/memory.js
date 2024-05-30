@@ -1,0 +1,265 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(to top left, #9b59b6, #1abc9c) no-repeat fixed;
+    font-family: "noto", sans-serif;
+  }
+  
+  h1 {
+    color: white;
+    text-align: center;
+    text-decoration: underline;
+    padding-top: 70px;
+    padding-bottom: 90px;
+  } 
+  h2 {
+    color: white;
+    text-align: center;
+    text-decoration: underline;
+    padding-top: 70px;
+    padding-bottom: 65px;
+  } 
+
+
+  .navbar {
+    background-color: #333;
+    overflow: hidden;
+  }
+
+  .navbar-menu {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .navbar-item {
+    display: inline;
+  }
+
+  .navbar-link {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 20px;
+    text-decoration: none;
+  }
+
+  .navbar-link:hover {
+    background-color: #ddd;
+    color: black;
+  }
+
+  .text {
+    color: white;
+    text-align: center;
+    padding-top: 90px;
+  }
+
+  .chronoPosition {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 10px 0 10px 0;
+  }
+  
+  /* img fléche */
+  .chronoPosition img {
+    width: 20px;
+    height: 20px;
+  }
+
+  .chronoPosition .time {
+    font-weight: bold;
+    font-size: 25px;
+    color: white;
+  }
+/* position du jeu */
+  .memory-game {
+    width: 550px;
+    margin: auto;
+    height: 500px;
+    display: flex;
+    flex-wrap: wrap;
+    -webkit-perspective: 1000px;
+    perspective: 1000px;
+  }
+
+  /* carte */
+  .memory-card {
+    margin: 5px;
+    width: calc(25% - 10px);
+    height: calc(33.333% - 10px);
+    position: relative;
+    transform: scale(1);
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    transition: transform 0.5s; /*rotation*/
+    box-shadow: 5px 2px 20px 0 rgba(82, 102, 117, 0.5);
+  }
+  
+  /* passage souris */
+  .memory-card:hover {
+    cursor: pointer;
+  }
+  
+  /* retournement carte */
+  .memory-card:active {
+    transform: scale(0.97);
+    transition: transform 0.3s;
+  }
+  
+  .memory-card.flip {
+    /* internet exploreur */
+    -ms-transform: rotateY(180deg);
+    /* chrome, safari */
+    -webkit-transform: rotateY(180deg);
+    /* firefox */
+    -moz-transform: rotateY(180deg);
+    /* Opera */
+    -o-transform: rotateY(180deg);
+    /* standard */
+    transform: rotateY(180deg);
+  }
+  
+  .front-face,
+  .back-face {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    padding: 20px;
+    /* compatibilité chrome et safari */
+    -webkit-backface-visibility: hidden;
+   /* contrôle si retourner */
+    backface-visibility: hidden;
+    border-radius: 5px;
+  }
+  
+  .back-face {
+    background-color: #456b91;
+  }
+  
+  .front-face {
+    -webkit-transform: rotateY(180deg);
+    transform: rotateY(180deg);
+    background-color: white;
+  }
+  
+  img {
+    width: 100px;
+  }
+  
+  /* congrats section */
+  .hidden {
+    display: none !important;
+  }
+  
+  /* montrer */
+  .show {
+    display: block;
+  }
+  
+  /* position congrats */
+  #congratsSection {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+  }
+  
+  /* interieur congrats */
+  #congratsDiv {
+    width: 300px;
+    background: white;
+    color: #6186aa;
+    padding: 20px 0 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 5px;
+  }
+  
+  /* temp final*/
+  .final {
+    font-weight: bold;
+    font-size: 20px;
+    letter-spacing: 2px;
+    margin: auto;
+    padding: 10px 20px;
+  }
+  
+  /* bouton rejouer */
+  .again {
+    font-size: 20px;
+    font-weight: bold;
+    color: #6186aa;
+    text-decoration: none;
+    margin: auto;
+    padding: 10px 20px;
+    width: 160px;
+    border: solid 1px;
+    border-radius: 5px;
+  }
+
+  /* souris passe dessu */
+  .again:hover {
+    background: #6186aa;
+    background-image: linear-gradient(to top left, #9b59b6, #1abc9c);
+    background-size: 250%;
+    color: white;
+    cursor: pointer; /*main*/
+  }
+  
+  /*responsive*/
+  @media only screen and (max-width: 768px) {
+    h1 {
+      margin-top: 100px;
+      font-size: 22px;
+    }
+
+    .navbar-menu {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .navbar-link {
+      padding: 10px 0;
+    }
+
+    .chronoPosition {
+      margin: 20px 0 20px 0;
+    }
+  
+    .chronoPosition .time {
+      font-weight: thin;
+      font-size: 18px;
+    }
+  
+    .chronoPosition img {
+      width: 17px;
+      height: 17px;
+    }
+  
+    .memory-game {
+      width: 350px;
+      height: 450px;
+    }
+  
+    .memory-card {
+      margin: 5px;
+      width: calc(33.333% - 10px);
+      height: calc(25% - 10px);
+    }
+  }
