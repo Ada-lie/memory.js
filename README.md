@@ -1,6 +1,4 @@
 # projet Memory en js
-Memory card game project
+Memory card game project by Julie
 
-WebLink : https://reeyhanyilmaz.github.io/JavaScript-MemoryCardGame/
-
-![screenshot](./assets/screenshot.png)
+![screenshot](./assets/game-memory.png)
