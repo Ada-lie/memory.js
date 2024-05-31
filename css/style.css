@@ -1,4 +1,4 @@
-* {
+  * {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
@@ -7,7 +7,7 @@
   body {
     height: 100%;
     width: 100%;
-    background: linear-gradient(to top left, #9b59b6, #1abc9c) no-repeat fixed;
+    background: linear-gradient(to top left, #b65994, #1abc9c) no-repeat fixed;
     font-family: "noto", sans-serif;
   }
   
@@ -63,10 +63,22 @@
     padding-top: 90px;
   }
 
+  .div-img-game {
+    display: flex;
+    justify-content: center;
+  }
+
+  .demo-image-game {
+    margin-top: 40px;
+    border: 2px solid green;
+    -webkit-box-shadow: -10px 0px 13px -7px #000000, 10px 0px 13px -7px #000000, 5px 5px 15px 5px rgba(0,0,0,0); 
+    box-shadow: -10px 0px 13px -7px #000000, 10px 0px 13px -7px #000000, 5px 5px 15px 5px rgba(0,0,0,0);
+  }
+
   .chronoPosition {
     display: flex;
     justify-content: space-evenly;
-    margin: 10px 0 10px 0;
+    margin: 30px 0 10px 0;
   }
   
   /* img fléche */
@@ -80,7 +92,7 @@
     font-size: 25px;
     color: white;
   }
-/* position du jeu */
+  /* position du jeu */
   .memory-game {
     width: 550px;
     margin: auto;
@@ -151,10 +163,18 @@
     background-color: white;
   }
   
-  img {
-    width: 100px;
+  .img-card {
+    width: 100%;
   }
-  
+
+  /* barre espace rafraichir jeu */
+  .rod {
+  margin-top: 35px;
+  text-align: center;
+  margin-bottom: 30px;
+  color: white;
+  }
+
   /* congrats section */
   .hidden {
     display: none !important;
@@ -180,7 +200,7 @@
   
   /* interieur congrats */
   #congratsDiv {
-    width: 300px;
+    width: 440px;
     background: white;
     color: #6186aa;
     padding: 20px 0 40px;
@@ -198,6 +218,7 @@
     letter-spacing: 2px;
     margin: auto;
     padding: 10px 20px;
+    margin-bottom: revet-layer;
   }
   
   /* bouton rejouer */
@@ -220,6 +241,60 @@
     background-size: 250%;
     color: white;
     cursor: pointer; /*main*/
+  }
+
+  /* formulaire inscription*/
+  .form-container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    margin: auto;
+    margin-top: 130px;
+  }
+
+  form h3 {
+      margin-bottom: 20px;
+      text-align: center;
+      color: black;
+  }
+
+  .form-group {
+      margin-bottom: 15px;
+  }
+
+  .form-group label {
+      display: block;
+      margin-bottom: 5px;
+  }
+
+  .form-group input {
+      width: 100%;
+      padding: 8px;
+      box-sizing: border-box;
+  }
+
+  .form-actions {
+      display: flex;
+      justify-content: space-between;
+  }
+
+  button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+  }
+
+  button[type="submit"] {
+      background-color: #4CAF50;
+      color: white;
+  }
+
+  button[type="button"] {
+      background-color: #f44336;
+      color: white;
   }
   
   /*responsive*/

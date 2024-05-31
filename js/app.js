@@ -16,7 +16,7 @@ let finalTime;
 let click = -1;
 
 function flipCard() {
-  // si etat plateau lockBoard vrais return
+  // si etat plateau lockBoard n'est pas vérouillé return true
   if (lockBoard) return;
   // si carte cliqué = premère carte retourné return
   if (this === firstCard) return;
@@ -41,7 +41,7 @@ function flipCard() {
 // comparé les 2 cartes id, si = les retournées
 function checkForMatch() {
   let isMatch = firstCard.dataset.id === secondCard.dataset.id;
-  isMatch ? disableCards() : unFlipCards();
+  isMatch ? disableCards() : unFlipCards(); // Si isMatch true: disableCards, ou si false: unFlipsCards (opérateur ternaire)
 }
 
 function disableCards() {
@@ -59,24 +59,38 @@ function unFlipCards() {
     lockBoard = true;
   //not match
   setTimeout(() => {
-    firstCard.classList.remove("flip");
+    firstCard.classList.remove("flip"); // arret retournement
     secondCard.classList.remove("flip");
     resetBoard();
-  }, 700);
+  }, 700); //délais execution fonction 
+}
+
+function resetBoard() {
+  // card permet de cliquer à nouveau à son retour
+  [hasFlippedCard, lockBoard] = [false, false];
+  [firstCard, secondCard] = [null, null];
 }
 
 //lorsque le bouton acualiser est enfoncé
 refresh.addEventListener("click", function () {
-  confirm("Are you sure that?");
+  confirm("Etes vous ?");
   location.reload();
 });
+
+//////////fonction pour rafraichir avec la barre, keydown clavier
+document.addEventListener("keydown", (event) => { //keydown clavier , event appuye sur la touche
+   if (event.code === "Space") {
+    confirm("Etes vous sur ?"); //ouvre modale
+    location.reload(); // refresh la page
+   }
+  })
 
 //affichage de l'heure
 function startTime() {
   if (click === -1) {
     interval = setInterval(function () {
       //l'intervalle garantit un fonctionnement continu à certains intervalles.
-      final.innerHTML = "You won in " + finalTime + " time!";
+      final.innerHTML = " Tu as gagné, ton temps est: " + finalTime + "!";  //mise jour du contenu html
       finalTime = minute.innerHTML + ":" + second.innerHTML;
       totalSeconds++;
       second.innerHTML = pad(totalSeconds % 60);
@@ -107,11 +121,39 @@ function gameWon() {
     congratsSection.classList.replace("hidden", "show");
     clearInterval(interval);
     finalTime = minute.innerHTML + ":" + second.innerHTML;
-    final.innerHTML = "You won in " + finalTime + " time!";
+    final.innerHTML = " Tu as gagné, ton temps est: " + finalTime + "!";
     totalTime.innerHTML = finalTime;
   }
   click = 0;
 }
+
+// formulaire inscription
+document.addEventListener("DOMContentLoaded", function() {
+  const form = document.getElementById("signupForm");
+  const cancelButton = document.getElementById("cancelButton");
+
+  form.addEventListener("submit", function(event) {
+      event.preventDefault(); // Empêche la soumission du formulaire
+      const name = document.getElementById("name").value;
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+      const confirmPassword = document.getElementById("confirmPassword").value;
+
+      console.log(name, email, password, confirmPassword)
+
+      // Validation simple
+      if (password !== confirmPassword) {
+          alert("Les mots de passe ne correspondent pas.");
+          return;
+      }
+
+      alert(`Inscription réussie pour ${name}!`);
+  });
+
+  cancelButton.addEventListener("click", function() {
+      form.reset(); // Réinitialise le formulaire
+  });
+});
 
 //congrats encore une fois le bouton dans la section félicitaton
 again.addEventListener("click", function () {
